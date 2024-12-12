@@ -69,7 +69,7 @@
         app:srcCompat="@drawable/shopping_list" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/recipeBookTextId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recipe Book"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/recipeBookButtonId" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/ingredientsTextId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ingredients"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ingredientsButtonId" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/shoppingListTextId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shopping List"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/shoppingListButtonId" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/aiRecipesTextId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AI Recipes"

@@ -1,38 +1,43 @@
+
 package com.example.dishdash;
 
-import android.media.Image;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
+import android.os.Bundle;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import java.util.Arrays;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import android.util.Log;
+
+import com.example.dishdash.ChatGPT.ApiConfig;
+import com.example.dishdash.ChatGPT.ChatGPTApi;
+import com.example.dishdash.ChatGPT.ChatRequest;
+import com.example.dishdash.ChatGPT.ChatResponse;
+import com.example.dishdash.ChatGPT.Message;
+import com.example.dishdash.ChatGPT.RetrofitInstance;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
-
     ImageButton recipeBookButton;
     ImageButton aiRecipesButton;
     ImageButton ingredientsButton;
     ImageButton shoppingListButton;
     Button sideMenuButton;
 
+    private TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-        // BUTTONS
+
+        // ACTIVITY ITEMS
         recipeBookButton = (ImageButton) findViewById(R.id.recipeBookButtonId);
         aiRecipesButton = (ImageButton) findViewById(R.id.aiRecipesButtonId);
         ingredientsButton = (ImageButton) findViewById(R.id.ingredientsButtonId);
@@ -50,6 +55,32 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "AI Recipes", Toast.LENGTH_SHORT).show();
+                ChatGPTApi chatGPTApi = RetrofitInstance.getInstance().create(ChatGPTApi.class);
+                ChatRequest request = new ChatRequest(
+                        "gpt-4o-mini",
+                        Arrays.asList(new Message("user", "Provide a meal recipe for items: chicken"))
+                );
+
+                // Make the API call
+                chatGPTApi.getChatResponse("Bearer " + ApiConfig.API_KEY, request)
+                    .enqueue(new Callback<ChatResponse>() {
+                        @Override
+                        public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                String reply = response.body().getChoices().get(0).getMessage().getContent();
+                                Intent intent = new Intent(MainActivity.this, AiRecipes.class);
+                                intent.putExtra("response", reply);
+                                startActivity(intent);
+                            } else {
+                                Log.e("ChatGPT Error", "Error: " + response.code() + " - " + response.message());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ChatResponse> call, Throwable t) {
+                            Log.e("ChatGPT Failure", "Request failed", t);
+                        }
+                    });
             }
         });
 
@@ -70,9 +101,8 @@ public class MainActivity extends AppCompatActivity {
         sideMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "SkMin KeYfInE gOrE bUtOnU", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Side Menu", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }
