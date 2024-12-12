@@ -5,59 +5,131 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#383636"
+    android:backgroundTint="#383636"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-4dp">
 
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@drawable/custom_button"
-        android:text=""
+    <ImageButton
+        android:id="@+id/recipeBookButtonId"
+        android:layout_width="178dp"
+        android:layout_height="163dp"
+        android:background="#98FBFAFA"
+        android:backgroundTint="#383636"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.758"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.61" />
+        app:layout_constraintVertical_bias="0.32"
+        app:srcCompat="@drawable/recipe_book" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@drawable/custom_button"
-        android:text=""
+    <ImageButton
+        android:id="@+id/ingredientsButtonId"
+        android:layout_width="178dp"
+        android:layout_height="163dp"
+        android:background="#98FBFAFA"
+        android:backgroundTint="#383636"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.758"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331" />
+        app:layout_constraintVertical_bias="0.684"
+        app:srcCompat="@drawable/ingredients" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@drawable/custom_button"
-        android:text=""
+    <ImageButton
+        android:id="@+id/aiRecipesButtonId"
+        android:layout_width="178dp"
+        android:layout_height="163dp"
+        android:background="#98FBFAFA"
+        android:backgroundTint="#383636"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.61" />
+        app:layout_constraintVertical_bias="0.32"
+        app:srcCompat="@drawable/ai_recipes" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@drawable/custom_button"
-        android:text=""
+    <ImageButton
+        android:id="@+id/shoppingListButtonId"
+        android:layout_width="173dp"
+        android:layout_height="164dp"
+        android:background="#98FBFAFA"
+        android:backgroundTint="#383636"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331" />
+        app:layout_constraintVertical_bias="0.686"
+        app:srcCompat="@drawable/shopping_list" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recipe Book"
+        android:textColor="#F9AEBC"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeBookButtonId" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredients"
+        android:textColor="#F9AEBC"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredientsButtonId" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shopping List"
+        android:textColor="#F9AEBC"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingListButtonId" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AI Recipes"
+        android:textColor="#F9AEBC"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aiRecipesButtonId" />
+
+    <Button
+        android:id="@+id/sideMenuButtonId"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
+        android:background="#F9AEBC"
+        android:textColorLink="#F0D2DA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
