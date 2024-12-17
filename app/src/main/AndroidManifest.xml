@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AiRecipes"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             tools:ignore="Instantiatable" />
     </application>
 
