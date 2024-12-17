@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 ChatGPTApi chatGPTApi = RetrofitInstance.getInstance().create(ChatGPTApi.class);
                 ChatRequest request = new ChatRequest(
                         "gpt-4o-mini",
-                        Arrays.asList(new Message("user", "Provide a meal recipe for items: chicken"))
+                        Arrays.asList(new Message("user", "Provide a random meal recipe"))
                 );
 
                 // Make the API call
