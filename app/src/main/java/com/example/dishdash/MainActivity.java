@@ -14,7 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import android.util.Log;
 
-import com.example.dishdash.ChatGPT.ApiConfig;
+import com.example.dishdash.ChatGPT.ApiKeyConfig;
 import com.example.dishdash.ChatGPT.ChatGPTApi;
 import com.example.dishdash.ChatGPT.ChatRequest;
 import com.example.dishdash.ChatGPT.ChatResponse;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 );
 
                 // Make the API call
-                chatGPTApi.getChatResponse("Bearer " + ApiConfig.API_KEY, request)
+                chatGPTApi.getChatResponse("Bearer " + ApiKeyConfig.API_KEY, request)
                     .enqueue(new Callback<ChatResponse>() {
                         @Override
                         public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<ChatResponse> call, Throwable t) {
                             Log.e("ChatGPT Failure", "Request failed", t);
+                            Toast.makeText(MainActivity.this, "Connection Error", Toast.LENGTH_SHORT).show();
                         }
                     });
             }

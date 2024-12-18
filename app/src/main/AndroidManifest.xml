@@ -23,9 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AiRecipes"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".AiRecipes"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+        </activity>
     </application>
 
 </manifest>
